@@ -1,0 +1,92 @@
+package Tugas2Pratikum.Construktor;
+
+import java.util.Scanner;
+
+public class MainStudent {
+    public static void main(String[] args) {
+        Scanner wedew = new Scanner(System.in);
+
+        Student anna = new Student();
+        anna.setName("Anna");
+        anna.setAddress("Malang");
+        anna.setAge(20);
+        anna.setMath(100);
+        anna.setScience(89);
+        anna.setEnglish(80);
+        anna.displayMessage();
+
+        //menggunakan construktor lain
+        System.out.println("===============");
+        Student chris = new Student("Chris", "Kediri", 21);
+        chris.setMath(70);
+        chris.setScience(60);
+        chris.setEnglish(90);
+        chris.displayMessage();
+
+        //siswa dengan nama anna dirubah informasi alamat dan umurnya melalui construktor
+        System.out.println("===============");
+        anna = new Student("Anna", "Batu", 18);
+        anna.displayMessage();
+
+        //siswa dengan nama chris dirubah informasi alamat dan umurnya melalui method
+        System.out.println("===============");
+        chris.setAddress("Surabaya");
+        chris.setAge (22);
+        chris.displayMessage();
+
+        System.out.println("===============");
+        Student budi = new Student(75, 80, 90);
+        budi.setName("Budi");
+        budi.setAddress("Yogyakarta");
+        budi.setAge(19);
+        budi.displayMessage();
+
+         // Meminta jumlah siswa dari user
+         System.out.println();
+         System.out.println("===============");
+         System.out.print("Berapa jumlah siswa: ");
+         int jumlahSiswa = wedew.nextInt();
+         wedew.nextLine(); 
+
+         // Membuat array untuk menyimpan siswa
+         Student[] siswakita = new Student[jumlahSiswa];
+          for (int i = 0; i < jumlahSiswa; i++) {
+            System.out.println();
+             System.out.println("Masukkan data siswa ke-" + (i + 1));
+ 
+             System.out.print("Nama: ");
+             String nama = wedew.nextLine();
+ 
+             System.out.print("Alamat: ");
+             String alamat = wedew.nextLine();
+ 
+             System.out.print("Umur: ");
+             int umur = wedew.nextInt();
+ 
+             System.out.print("Nilai Matematika: ");
+             double math = wedew.nextDouble();
+ 
+             System.out.print("Nilai IPA: ");
+             double science = wedew.nextDouble();
+ 
+             System.out.print("Nilai Bahasa Inggris: ");
+             double english = wedew.nextDouble();
+             wedew.nextLine(); 
+ 
+             // Membuat objek Student dan memasukkan ke dalam array
+             siswakita[i] = new Student(nama, alamat, umur);
+             siswakita[i].setMath(math);
+             siswakita[i].setScience(science);
+             siswakita[i].setEnglish(english);
+         }
+         // Menampilkan data semua siswa
+         System.out.println();
+         System.out.println("===== DATA - DATA SISWA =====");
+         for (int i = 0; i < jumlahSiswa; i++) {
+             siswakita[i].displayMessage();
+             System.out.println("===============");
+             Student.jumlahObjek();
+         }
+         wedew.close();
+    }
+}
